@@ -50,3 +50,5 @@ export class Reservation {
     return (this.seatsAvailable += quantity);
   }
 }
+
+export default Passenger;
