@@ -1,101 +1,19 @@
-//bank
-class BankAccount {
-  constructor(id, name, balance) {
-    this.id = id;
-    this.name = name;
-    this.balance = balance;
-  }
-  deposit(amount) {
-    this.balance += amount;
-    console.log(`${amount} deposited on account`);
-  }
-  withdraw(amount) {
-    if (amount <= this.balance) {
-      this.balance -= amount;
-      console.log(`${amount} withdrawn from account`);
-    } else {
-      console.log("Insufficient funds");
-    }
-  }
-  getBalance() {
-    return this.balance;
-  }
-}
+import BankAccount, { CheckingAccount, SavingsAccount } from "./BankAccount";
+import LibraryItem, { DVD } from "./LibraryItem";
+import Product from "./Product";
 
-class SavingsAccount extends BankAccount {
-  deposit(amount) {
-    this.balance += amount;
-    console.log(`${amount} deposited on savings account`);
-  }
-  withdraw(amount) {
-    if (amount <= this.balance) {
-      this.balance -= amount;
-      console.log(`${amount} withdrawn from savings account`);
-    } else {
-      console.log("Insufficient funds");
-    }
-  }
-  getBalance() {
-    return this.balance;
-  }
-}
+const myBankAccount = new BankAccount();
+myBankAccount.deposit(122);
+const mySavingsAccount = new SavingsAccount(1, "es", 1344);
+const myCheckingAccount = new CheckingAccount(1, "323", 5555, 14);
+mySavingsAccount.deposit(300);
+console.log(mySavingsAccount.balance);
+myCheckingAccount.calculateInterest();
 
-class CheckingAccount extends BankAccount {
-  constructor(id, name, balance, interest) {
-    super(id, name, balance);
-    this.interest = interest;
-  }
-  deposit(amount) {
-    if (amount <= this.balance) {
-      this.balance -= amount;
-      console.log(`${amount} withdrawn from checking account`);
-    } else {
-      console.log("Insufficient funds");
-    }
-  }
-  withdraw(amount) {
-    console.log(`${(this.balance -= amount)} withdrawn from checking account`);
-  }
-  calculateInterest() {
-    const monthlyInterest = (this.interest / 12) * this.balance;
-    this.balance += monthlyInterest;
-    console.log(`Monthly interest of $${monthlyInterest.toFixed(2)} applied.`);
-  }
-}
+const myProd = new Product(12, "add", 1);
+myProd.getProductDetails();
+const myDVD = new DVD("sadad", 123131, true, "asda", 123);
+myDVD.play();
 
-//ecommerce
-
-class Product {
-  constructor(id, name, price) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-  }
-  getProductDetails() {
-    console.log(
-      `Product id ${this.id}
-         Product name ${this.name}
-         Product price ${this.price}`
-    );
-  }
-}
-
-class PhysicalProduct extends Product {
-  constructor(id, name, price, weight) {
-    super(id, name, price);
-    this.weight = weight;
-  }
-  calculateShippingCost(destinationInMeters) {
-    const shippingCost = this.weight * destinationInMeters;
-    return shippingCost;
-  }
-}
-class DigitalProduct extends Product {
-  constructor(id, name, price, downloadLink) {
-    super(id, name, price);
-    this.downloadLink = downloadLink;
-  }
-  getDownloadLink() {
-    return this.downloadLink;
-  }
-}
+const myLib = new LibraryItem("aa", 123131, true);
+console.log(myLib.title);
