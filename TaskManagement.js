@@ -49,8 +49,7 @@ export class Project {
     return `Project info :
     ID : ${this.id}
     TITLE : ${this.title}
-    TASKS : 
-    ${taskList.join("\n")}`;
+    TASKS : ${taskList.join("\n")}`;
   }
 }
 
