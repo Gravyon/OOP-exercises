@@ -1,4 +1,4 @@
-import Passenger, { Flight, Reservation } from "./AirlineBookig";
+import Passenger, { Flight, Reservation } from "./AirlineBooking";
 import BankAccount, { CheckingAccount, SavingsAccount } from "./BankAccount";
 import LibraryItem, { DVD } from "./LibraryItem";
 import Product from "./Product";
