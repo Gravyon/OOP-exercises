@@ -23,15 +23,15 @@ export class BankAccount {
 export class SavingsAccount extends BankAccount {
   deposit(amount: number) {
     this.balance += amount;
-    console.log(`${amount} deposited on savings account`);
+    return `${amount} deposited on savings account`;
   }
 
   withdraw(amount: number) {
     if (amount <= this.balance) {
       this.balance -= amount;
-      console.log(`${amount} withdrawn from savings account`);
+      return `${amount} withdrawn from savings account`;
     } else {
-      console.log("Insufficient funds");
+      return "Insufficient funds";
     }
   }
   getBalance(): string {

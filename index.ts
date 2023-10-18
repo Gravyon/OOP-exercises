@@ -14,7 +14,7 @@ myCheckingAccount.calculateInterest();
 
 const myProd = new Product(12, "add", 1);
 myProd.getProductDetails();
-const myDVD = new DVD("sadad", 123131, true, "asda", 123);
+const myDVD = new DVD("sadad", 123131, true, "asda", 123, true);
 myDVD.play();
 
 const myLib = new LibraryItem("aa", 123131, true);
@@ -25,9 +25,9 @@ const f1 = new Flight(22, "city", "tocity", "12/12/23", 34);
 const r1 = new Reservation(p1, f1, 23);
 r1.getReservationInfo();
 
-const t1 = new Task(1, "crear", "creacion de asda");
 const u1 = new User(1, "user");
 const pro1 = new Project(1, "proyecto");
+const t1 = new Task(1, "crear", "creacion de asda", false, null);
 t1.assignTo(u1);
 console.log(u1.getInfo());
 pro1.addTask(t1);
@@ -58,8 +58,8 @@ console.log(checkingAccount1.getBalance());
 
 // Library Item
 
-const book1 = new LibraryItem("Book001", "The Great Gatsby", false);
-const dvd1 = new DVD("DVD001", "Inception", true);
+const book1 = new LibraryItem("Book001", 5464841, false);
+const dvd1 = new DVD("DVD001", 124556, true, "John", 145, true);
 
 book1.checkOut();
 console.log(book1.title);
@@ -77,13 +77,13 @@ console.log(product1.getProductInfo());
 const user1 = new User(1, "Alice");
 const user2 = new User(2, "Bob");
 
-const task1 = new Task(1, "Task 1", "Complete this task");
+const task1 = new Task(1, "Task 1", "Complete this task", false, null);
 task1.assignTo(user1);
-task1.changeStatus("In Progress");
+task1.changeStatus(false);
 
-const task2 = new Task(2, "Task 2", "Review documentation");
+const task2 = new Task(2, "Task 2", "Review documentation", false, null);
 task2.assignTo(user2);
-task2.changeStatus("Completed");
+task2.changeStatus(true);
 
 const project1 = new Project(1, "Project Alpha");
 project1.addTask(task1);

@@ -29,11 +29,9 @@ export class Reservation {
   ) {}
 
   getReservationInfo() {
-    console.log(
-      `Passenger ${this.passenger.getPassengerInfo()} has a flight ${
-        this.flight.flightNumber
-      } with reservation number ${this.reservationNumber}`
-    );
+    return `Passenger ${this.passenger.getPassengerInfo()} has a flight ${
+      this.flight.flightNumber
+    } with reservation number ${this.reservationNumber}`;
   }
 
   changeStatus(booked: boolean): string {
