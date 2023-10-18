@@ -9,12 +9,12 @@ export class Task {
   assignTo(user) {
     this.assignedUser = user;
   }
-  changeStatus() {
-    if (this.isCompleted) {
-      this.isCompleted = false;
+  changeStatus(isCompleted) {
+    if (isCompleted) {
+      isCompleted = false;
       return "In Progress";
     } else {
-      this.isCompleted = true;
+      isCompleted = true;
       return "Completed";
     }
   }

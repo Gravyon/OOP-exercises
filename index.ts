@@ -4,7 +4,7 @@ import LibraryItem, { DVD } from "./LibraryItem";
 import Product from "./Product";
 import Task, { Project, User } from "./TaskManagement";
 
-const myBankAccount = new BankAccount();
+const myBankAccount = new BankAccount(1, "myname", 1414);
 myBankAccount.deposit(122);
 const mySavingsAccount = new SavingsAccount(1, "es", 1344);
 const myCheckingAccount = new CheckingAccount(1, "323", 5555, 14);
@@ -21,8 +21,7 @@ const myLib = new LibraryItem("aa", 123131, true);
 console.log(myLib.title);
 
 const p1 = new Passenger("un", 123);
-const date = new Date().getDate();
-const f1 = new Flight(22, "city", "tocity", date, 34);
+const f1 = new Flight(22, "city", "tocity", "12/12/23", 34);
 const r1 = new Reservation(p1, f1, 23);
 r1.getReservationInfo();
 
@@ -36,24 +35,18 @@ console.log(pro1.getProjectInfo());
 
 // Airline Booking
 
-const passenger1 = new Passenger("John Doe", "ABC123");
-const flight1 = new Flight(
-  "FA123",
-  "New York",
-  "Los Angeles",
-  "2023-10-15",
-  150
-);
-const reservation1 = new Reservation(passenger1, flight1);
+const passenger1 = new Passenger("John Doe", 123);
+const flight1 = new Flight(123, "New York", "Los Angeles", "2023-10-15", 150);
+const reservation1 = new Reservation(passenger1, flight1, 12);
 
-reservation1.bookSeat("A3");
+reservation1.bookSeat(3);
 reservation1.changeStatus(true);
 console.log(reservation1.getReservationInfo());
 
 // Bank Account
 
-const savingsAccount1 = new SavingsAccount("SA001", "John Doe", 1000);
-const checkingAccount1 = new CheckingAccount("CA101", "Alice Smith", 500, 0.02);
+const savingsAccount1 = new SavingsAccount(111, "John Doe", 1000);
+const checkingAccount1 = new CheckingAccount(101, "Alice Smith", 500, 0.02);
 
 savingsAccount1.deposit(500);
 savingsAccount1.withdraw(200);

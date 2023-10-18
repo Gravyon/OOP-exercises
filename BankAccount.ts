@@ -1,15 +1,12 @@
-//bank
 export class BankAccount {
-  constructor(id, name, balance) {
-    this.id = id;
-    this.name = name;
-    this.balance = balance;
-  }
-  deposit(amount) {
+  constructor(public id: number, public name: string, public balance: number) {}
+
+  deposit(amount: number) {
     this.balance += amount;
     console.log(`${amount} deposited on account`);
   }
-  withdraw(amount) {
+
+  withdraw(amount: number) {
     if (amount <= this.balance) {
       this.balance -= amount;
       console.log(`${amount} withdrawn from account`);
@@ -17,17 +14,19 @@ export class BankAccount {
       console.log("Insufficient funds");
     }
   }
-  getBalance() {
-    return this.balance;
+
+  getBalance(): string {
+    return `Your balance: ${this.balance}`;
   }
 }
 
 export class SavingsAccount extends BankAccount {
-  deposit(amount) {
+  deposit(amount: number) {
     this.balance += amount;
     console.log(`${amount} deposited on savings account`);
   }
-  withdraw(amount) {
+
+  withdraw(amount: number) {
     if (amount <= this.balance) {
       this.balance -= amount;
       console.log(`${amount} withdrawn from savings account`);
@@ -35,17 +34,22 @@ export class SavingsAccount extends BankAccount {
       console.log("Insufficient funds");
     }
   }
-  getBalance() {
-    return console.log(`Your balance : ${this.balance}`);
+  getBalance(): string {
+    return `Your balance: ${this.balance}`;
   }
 }
 
 export class CheckingAccount extends BankAccount {
-  constructor(id, name, balance, interest) {
+  constructor(
+    id: number,
+    name: string,
+    balance: number,
+    public interest: number
+  ) {
     super(id, name, balance);
-    this.interest = interest;
   }
-  deposit(amount) {
+
+  deposit(amount: number) {
     if (amount <= this.balance) {
       this.balance -= amount;
       console.log(`${amount} withdrawn from checking account`);
@@ -53,9 +57,11 @@ export class CheckingAccount extends BankAccount {
       console.log("Insufficient funds");
     }
   }
-  withdraw(amount) {
+
+  withdraw(amount: number) {
     console.log(`${(this.balance -= amount)} withdrawn from checking account`);
   }
+
   calculateInterest() {
     const monthlyInterest = (this.interest / 12) * this.balance;
     this.balance += monthlyInterest;
