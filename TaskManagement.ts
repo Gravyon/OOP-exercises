@@ -1,15 +1,15 @@
 export class Task {
-  constructor(id, title, description) {
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.isCompleted = false;
-    this.assignedUser = null;
-  }
-  assignTo(user) {
+  constructor(
+    public id: number,
+    public title: string,
+    public description: string,
+    public isCompleted: boolean,
+    public assignedUser: null | User
+  ) {}
+  assignTo(user: User) {
     this.assignedUser = user;
   }
-  changeStatus(isCompleted) {
+  changeStatus(isCompleted: boolean) {
     if (isCompleted) {
       isCompleted = false;
       return "In Progress";
@@ -20,10 +20,7 @@ export class Task {
   }
 }
 export class User {
-  constructor(id, name) {
-    this.id = id;
-    this.name = name;
-  }
+  constructor(public id: number, public name: string) {}
   getInfo() {
     return `User info :
     ID : ${this.id}
@@ -31,12 +28,12 @@ export class User {
   }
 }
 export class Project {
-  constructor(id, title) {
-    this.id = id;
-    this.title = title;
-    this.tasks = [];
-  }
-  addTask(task) {
+  constructor(
+    public id: number,
+    public title: string,
+    public tasks: Array<Task> = []
+  ) {}
+  addTask(task: Task) {
     this.tasks.push(task);
   }
   getProjectInfo() {

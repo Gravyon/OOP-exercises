@@ -1,11 +1,7 @@
 //ecommerce
 
 export class Product {
-  constructor(id, name, price) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-  }
+  constructor(public id: number, public name: string, public price: number) {}
   getProductDetails() {
     console.log(`Product Details:
     ID: ${this.id}
@@ -19,7 +15,13 @@ export class Product {
 }
 
 export class PhysicalProduct extends Product {
-  constructor(id, name, price, weight, quantity) {
+  constructor(
+    public id: number,
+    public name: string,
+    public price: number,
+    public weight: number,
+    public quantity: number
+  ) {
     super(id, name, price);
     this.weight = weight;
     this.quantity = quantity;
@@ -33,9 +35,13 @@ export class PhysicalProduct extends Product {
   }
 }
 export class DigitalProduct extends Product {
-  constructor(id, name, price, downloadLink) {
+  constructor(
+    public id: number,
+    public name: string,
+    public price: number,
+    public downloadLink: string
+  ) {
     super(id, name, price);
-    this.downloadLink = downloadLink;
   }
   getDownloadLink() {
     return this.downloadLink;
