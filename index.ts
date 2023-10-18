@@ -2,7 +2,9 @@ import Passenger, { Flight, Reservation } from "./AirlineBooking";
 import BankAccount, { CheckingAccount, SavingsAccount } from "./BankAccount";
 import LibraryItem, { DVD } from "./LibraryItem";
 import Product from "./Product";
-import Task, { Project, User } from "./TaskManagement";
+import Task, { Project } from "./TaskManagement";
+import { Cart, Order } from "./ECommerce";
+import { User } from "./User";
 
 const myBankAccount = new BankAccount(1, "myname", 1414);
 myBankAccount.deposit(122);
@@ -13,7 +15,7 @@ console.log(mySavingsAccount.balance);
 myCheckingAccount.calculateInterest();
 
 const myProd = new Product(12, "add", 1);
-myProd.getProductDetails();
+myProd.getProductInfo();
 const myDVD = new DVD("sadad", 123131, true, "asda", 123, true);
 myDVD.play();
 
@@ -91,3 +93,50 @@ project1.addTask(task2);
 
 console.log(user1.getInfo());
 console.log(project1.getProjectInfo());
+
+// Create users
+const user4 = new User(1, "Alice");
+const user5 = new User(2, "Bob");
+
+// Create products
+const product5 = new Product(101, "Product A", 10.99);
+const product2 = new Product(102, "Product B", 19.99);
+const product3 = new Product(103, "Product C", 5.99);
+
+// Create shopping carts for users
+const cart1 = new Cart(user1);
+const cart2 = new Cart(user2);
+
+// Add products to the carts
+cart1.addToCart(product5);
+cart1.addToCart(product2);
+cart1.addToCart(product2);
+
+cart2.addToCart(product2);
+cart2.addToCart(product3);
+
+// Calculate and display cart totals
+console.log(`Cart Total for User 1: $${cart1.getCartTotal().toFixed(2)}`);
+console.log(`Cart Total for User 2: $${cart2.getCartTotal().toFixed(2)}`);
+
+// Create orders
+const order1 = cart1.placeOrder();
+const order2 = cart2.placeOrder();
+
+// Place orders
+const order1Details = order1.orderInfo();
+const order2Details = order2.orderInfo();
+
+console.log("Order 1 Details:");
+console.log(order1Details);
+
+console.log("Order 2 Details:");
+console.log(order2Details);
+
+// Remove a product from the cart
+cart1.removeFromCart(product2);
+
+// Calculate and display updated cart total
+console.log(
+  `Updated Cart Total for User 1: $${cart1.getCartTotal().toFixed(2)}`
+);

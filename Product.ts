@@ -1,17 +1,17 @@
-//ecommerce
+//store
 
 export class Product {
   constructor(public id: number, public name: string, public price: number) {}
-  getProductDetails() {
-    console.log(`Product Details:
+  getProductInfo() {
+    return `Product Details:
     ID: ${this.id}
     Name: ${this.name}
-    Price: $${this.price.toFixed(2)}`);
+    Price: $${this.price.toFixed(2)}`;
   }
-  getProductInfo() {
-    const productInfo = [this.id, this.name, this.price.toFixed(2)];
-    return productInfo;
-  }
+  // getProductInfo() {
+  //   const productInfo = [this.id, this.name, this.price.toFixed(2)];
+  //   return productInfo;
+  // }
 }
 
 export class PhysicalProduct extends Product {

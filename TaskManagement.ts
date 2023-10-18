@@ -1,3 +1,5 @@
+import { User } from "./User";
+
 export class Task {
   constructor(
     public id: number,
@@ -19,14 +21,7 @@ export class Task {
     }
   }
 }
-export class User {
-  constructor(public id: number, public name: string) {}
-  getInfo() {
-    return `User info :
-    ID : ${this.id}
-    NAME: ${this.name}`;
-  }
-}
+
 export class Project {
   constructor(
     public id: number,
