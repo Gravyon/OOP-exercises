@@ -32,9 +32,14 @@ export class DVD extends LibraryItem {
     super(title, barcode, checkedOut);
     this.director = director;
     this.duration = duration;
+    this.avaiable = this.avaiable;
   }
   play() {
     console.log(`Playing ${this.title} by ${this.director}`);
+  }
+  isAvailable() {
+    this.avaiable = true;
+    return true;
   }
 }
 

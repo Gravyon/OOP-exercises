@@ -47,7 +47,7 @@ const flight1 = new Flight(
 const reservation1 = new Reservation(passenger1, flight1);
 
 reservation1.bookSeat("A3");
-// reservation1.changeStatus("Booked");
+reservation1.changeStatus(true);
 console.log(reservation1.getReservationInfo());
 
 // Bank Account
@@ -72,7 +72,7 @@ book1.checkOut();
 console.log(book1.title);
 
 dvd1.checkIn();
-// console.log(dvd1.isAvailable());s
+console.log(dvd1.isAvailable());
 
 // Product
 

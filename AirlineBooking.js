@@ -35,6 +35,7 @@ export class Reservation {
     this.passenger = passenger;
     this.flight = flight;
     this.reservationNumber = reservationNumber;
+    this.status = this.status;
   }
   getReservationInfo() {
     return console.log(
@@ -42,6 +43,13 @@ export class Reservation {
         this.flight.flightNumber
       } with reservation number ${this.reservationNumber}`
     );
+  }
+  changeStatus(booked) {
+    if (booked) {
+      return `Booked`;
+    } else {
+      return `Unavailable`;
+    }
   }
   bookSeat(quantity) {
     return (this.seatsAvailable -= quantity);
