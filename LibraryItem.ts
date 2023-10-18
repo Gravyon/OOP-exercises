@@ -55,5 +55,3 @@ export class DVD extends LibraryItem {
     }
   }
 }
-
-export default LibraryItem;

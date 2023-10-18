@@ -8,10 +8,6 @@ export class Product {
     Name: ${this.name}
     Price: $${this.price.toFixed(2)}`;
   }
-  // getProductInfo() {
-  //   const productInfo = [this.id, this.name, this.price.toFixed(2)];
-  //   return productInfo;
-  // }
 }
 
 export class PhysicalProduct extends Product {
@@ -48,4 +44,3 @@ export class DigitalProduct extends Product {
   }
 }
 
-export default Product;

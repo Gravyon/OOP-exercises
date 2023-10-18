@@ -47,4 +47,3 @@ export class Reservation {
   }
 }
 
-export default Passenger;

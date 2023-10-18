@@ -2,7 +2,7 @@
 import { Passenger, Flight, Reservation } from "./AirlineBooking";
 import { BankAccount, CheckingAccount, SavingsAccount } from "./BankAccount";
 import { LibraryItem, DVD } from "./LibraryItem";
-import Product from "./Product";
+import { Product } from "./Product";
 import { Task, Project } from "./TaskManagement";
 import { Cart, Order } from "./ECommerce";
 import { User } from "./User";
@@ -111,6 +111,9 @@ console.log("Order 2 Details:");
 console.log(order2Details);
 
 cart1.removeFromCart(product2);
+
+cart1.addToCart(product2);
+console.log("User 1 Updated Cart Total:", cart1.getCartTotal().toFixed(2));
 
 console.log(
   `Updated Cart Total for User 1: $${cart1.getCartTotal().toFixed(2)}`

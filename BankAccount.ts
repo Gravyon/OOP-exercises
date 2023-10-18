@@ -68,5 +68,3 @@ export class CheckingAccount extends BankAccount {
     console.log(`Monthly interest of $${monthlyInterest.toFixed(2)} applied.`);
   }
 }
-
-export default BankAccount;

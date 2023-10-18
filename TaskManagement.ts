@@ -45,4 +45,3 @@ export class Project {
   }
 }
 
-export default Task;

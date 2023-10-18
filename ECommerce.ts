@@ -1,4 +1,4 @@
-import Product from "./Product";
+import { Product } from "./Product";
 import { User } from "./User";
 
 export class Cart {
@@ -7,9 +7,7 @@ export class Cart {
     this.products.push(prod);
   }
   removeFromCart(prod: Product) {
-    this.products = this.products.filter((item) => {
-      item !== prod;
-    });
+    this.products = this.products.filter((item) => item !== prod);
   }
 
   getCartTotal() {
@@ -20,7 +18,7 @@ export class Cart {
     return total;
   }
   placeOrder() {
-    const orderDate = Date.now();
+    const orderDate = new Date();
     const totalAmount = this.getCartTotal();
     const order = new Order(this.user, this.products, orderDate, totalAmount);
     this.products = [];
@@ -32,7 +30,7 @@ export class Order {
   constructor(
     public user: User,
     public products: Array<Product> = [],
-    public orderDate: number,
+    public orderDate: Date,
     public totalAmount: number
   ) {}
   orderInfo() {
@@ -40,8 +38,9 @@ export class Order {
       (product) => `${product.name} ${product.price}`
     );
     const productsInfo = formattedProducts.join("\n");
+    const formattedDate = this.orderDate.toDateString();
     return `Order placed by ${this.user.getInfo()}
-    DATE: ${this.orderDate.toLocaleString()}
+    DATE: ${formattedDate}
     ITEMS: ${productsInfo}`;
   }
 }
