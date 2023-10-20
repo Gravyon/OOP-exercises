@@ -30,14 +30,16 @@ export class Library {
       book.checkedOutBy = patron;
       patron.checkedOutBooks.push(book);
       return `${book.title} checkout by ${patron.name}`;
+    } else {
+      return `Book not available`;
     }
   }
 
-  checkIn(book: Book) {
+  checkIn(book: Book, patron: Patron) {
     if (!book.available) {
       book.available = true;
       book.checkedOutBy = null;
-      this.catalog = this.catalog.filter((item) => item !== book);
+      patron.checkedOutBooks.filter((item) => item !== book);
       return `${book.title} returned`;
     }
   }
@@ -93,10 +95,11 @@ const patron2 = new Patron(2, "Patron Y");
 const checkout1 = myLibrary.checkOut(book1, patron1);
 const checkout2 = myLibrary.checkOut(book2, patron2);
 const checkout3 = myLibrary.checkOut(book3, patron1);
+const checkout4 = myLibrary.checkOut(book3, patron2);
+const checkout5 = myLibrary.checkOut(book4, patron2);
+const checkIn1 = myLibrary.checkIn(book1, patron1);
 
-console.log(checkout1, checkout2, checkout3);
-
-console.log(patron1, patron2);
+console.log(`============================`);
 
 // Display Books Checked Out by Patrons
 console.log("Books checked out by Patron 1:");
