@@ -1,7 +1,7 @@
 // Import classes
 import { Passenger, Flight, Reservation } from "./AirlineBooking";
 import { BankAccount, CheckingAccount, SavingsAccount } from "./BankAccount";
-import { LibraryItem, DVD } from "./LibraryItem";
+import { Library } from "./Library";
 import { Product } from "./Product";
 import { Task, Project } from "./TaskManagement";
 import { Cart, Order } from "./ECommerce";
@@ -20,10 +20,6 @@ myCheckingAccount.calculateInterest();
 // Product
 const myProd = new Product(12, "add", 1);
 myProd.getProductInfo();
-
-// Library Item
-const myLib = new LibraryItem("aa", 123131, true);
-console.log(myLib.title);
 
 // Airline Booking
 const passenger1 = new Passenger("John Doe", 123);
@@ -44,15 +40,6 @@ const checkingAccount1 = new CheckingAccount(101, "Alice Smith", 500, 0.02);
 checkingAccount1.deposit(1000);
 checkingAccount1.calculateInterest();
 console.log(checkingAccount1.getBalance());
-
-// Library Item
-const book1 = new LibraryItem("Book001", 5464841, false);
-book1.checkOut();
-console.log(book1.title);
-
-const dvd1 = new DVD("DVD001", 124556, true, "John", 145, true);
-dvd1.checkIn();
-console.log(dvd1.isAvailable());
 
 // Product
 const product1 = new Product(1, "Widget A", 19.99);
