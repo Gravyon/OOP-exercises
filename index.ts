@@ -1,7 +1,7 @@
 // Import classes
 import { Passenger, Flight, Reservation } from "./AirlineBooking";
 import { BankAccount, CheckingAccount, SavingsAccount } from "./BankAccount";
-import { Library } from "./Library";
+import { Book, Library, Patron } from "./Library";
 import { Product } from "./Product";
 import { Task, Project } from "./TaskManagement";
 import { Cart, Order } from "./ECommerce";
@@ -20,6 +20,8 @@ myCheckingAccount.calculateInterest();
 // Product
 const myProd = new Product(12, "add", 1);
 myProd.getProductInfo();
+
+console.log(`============================`);
 
 // Airline Booking
 const passenger1 = new Passenger("John Doe", 123);
@@ -45,6 +47,8 @@ console.log(checkingAccount1.getBalance());
 const product1 = new Product(1, "Widget A", 19.99);
 console.log(product1.getProductInfo());
 
+console.log(`============================`);
+
 // Task Management
 const user1 = new User(1, "Alice");
 const user2 = new User(2, "Bob");
@@ -63,6 +67,8 @@ project1.addTask(task2);
 
 console.log(user1.getInfo());
 console.log(project1.getProjectInfo());
+
+console.log(`============================`);
 
 // E-commerce
 const user4 = new User(1, "Alice");
@@ -105,3 +111,52 @@ console.log("User 1 Updated Cart Total:", cart1.getCartTotal().toFixed(2));
 console.log(
   `Updated Cart Total for User 1: $${cart1.getCartTotal().toFixed(2)}`
 );
+
+console.log(`============================`);
+
+// Create a Library
+const myLibrary = new Library("My Library", 1);
+
+// Create Books
+const book1 = new Book("Book 1", 101, "Author A", "Fiction", true);
+const book2 = new Book("Book 2", 102, "Author B", "Mystery", true);
+const book3 = new Book("Book 3", 103, "Author C", "Science", true);
+const book4 = new Book("Book 4", 103, "Author D", "Drama", true);
+
+// Add Books to the Catalog
+myLibrary.addBook(book1);
+myLibrary.addBook(book2);
+myLibrary.addBook(book3);
+myLibrary.addBook(book4);
+
+console.log("Library Catalog:");
+myLibrary.getCatalog().forEach((book) => {
+  console.log(`Title: ${book.title}, Author: ${book.author}`);
+});
+
+// Create Patrons
+const patron1 = new Patron(1, "Patron X");
+const patron2 = new Patron(2, "Patron Y");
+
+// Check Out Books
+const checkout1 = myLibrary.checkOut(book1, patron1);
+const checkout2 = myLibrary.checkOut(book2, patron2);
+const checkout3 = myLibrary.checkOut(book3, patron1);
+const checkout4 = myLibrary.checkOut(book3, patron2);
+const checkout5 = myLibrary.checkOut(book4, patron2);
+const checkIn1 = myLibrary.checkIn(book1, patron1);
+
+console.log(`============================`);
+
+// Display Books Checked Out by Patrons
+console.log("Books checked out by Patron 1:");
+const booksByPatron1 = myLibrary.getBooksByPatron(patron1);
+booksByPatron1.forEach((book) => {
+  console.log(`Title: ${book.title}, Author: ${book.author}`);
+});
+
+console.log("Books checked out by Patron 2:");
+const booksByPatron2 = myLibrary.getBooksByPatron(patron2);
+booksByPatron2.forEach((book) => {
+  console.log(`Title: ${book.title}, Author: ${book.author}`);
+});
