@@ -21,8 +21,6 @@ myCheckingAccount.calculateInterest();
 const myProd = new Product(12, "add", 1);
 myProd.getProductInfo();
 
-console.log(`============================`);
-
 // Airline Booking
 const passenger1 = new Passenger("John Doe", 123);
 const flight1 = new Flight(123, "New York", "Los Angeles", "2023-10-15", 150);
