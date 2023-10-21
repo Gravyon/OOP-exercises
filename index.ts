@@ -6,6 +6,7 @@ import { Product } from "./Product";
 import { Task, Project } from "./TaskManagement";
 import { Cart, Order } from "./ECommerce";
 import { User } from "./User";
+import { MediaContent, SocialUser } from "./SocialMedia";
 
 // Bank Account
 const myBankAccount = new BankAccount(1, "myname", 1414);
@@ -157,4 +158,54 @@ console.log("Books checked out by Patron 2:");
 const booksByPatron2 = myLibrary.getBooksByPatron(patron2);
 booksByPatron2.forEach((book) => {
   console.log(`Title: ${book.title}, Author: ${book.author}`);
+});
+
+// Create users
+const alice = new SocialUser(1, "Alice");
+const bob = new SocialUser(2, "Bob");
+const bib = new SocialUser(3, "Bib");
+
+// Create and share posts
+alice.createPost("Hello, world!", null); // Alice creates a post without media content
+const imagePost = new MediaContent("image");
+alice.createPost("Check out this image!", imagePost); // Alice creates a post with image content
+bob.createPost("Nice video!", new MediaContent("video")); // Bob creates a post with video content
+
+// Share posts
+alice.sharePost(bob);
+bob.sharePost(alice);
+bob.sharePost(bib);
+
+// List posts and shared posts
+console.log("Alice's Posts:");
+alice.postsByUser.forEach((post) => {
+  console.log(
+    `Post: ${post.text}, Content: ${
+      post.content ? post.content.media_type : "N/A"
+    }`
+  );
+});
+
+console.log("Bob's Posts:");
+bob.postsByUser.forEach((post) => {
+  console.log(
+    `Post: ${post.text}, Content: ${
+      post.content ? post.content.media_type : "N/A"
+    }`
+  );
+});
+
+console.log("Alice's Shared Posts:");
+alice.postsSharedByUsers.forEach((user) => {
+  console.log(`${user.name} shared a post by Alice`);
+});
+
+console.log("Bob's Shared Posts:");
+bob.postsSharedByUsers.forEach((user) => {
+  console.log(`${user.name} shared a post by Bob`);
+});
+
+console.log("Bib's Shared Posts:");
+bib.postsSharedByUsers.forEach((user) => {
+  console.log(`${user.name} shared a post by Bib`);
 });
